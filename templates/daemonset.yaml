@@ -39,6 +39,9 @@ spec:
           name: kernel
         - mountPath: /lib/modules/
           name: modules
+        {{- if not (empty .Values.volumeMounts) }}
+        {{- toYaml .Values.volumeMounts | trim | nindent 8 }}
+        {{- end }}
       resources:
             {{- toYaml .Values.resources | nindent 12 }}
       dnsPolicy: ClusterFirst
@@ -57,3 +60,6 @@ spec:
             path: /lib/modules/
             type: Directory
           name: modules
+      {{- if not (empty .Values.volumes) }}
+        {{- toYaml .Values.volumes | trim | nindent 8 }}
+      {{- end }}

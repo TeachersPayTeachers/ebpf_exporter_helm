@@ -47,6 +47,8 @@ Parameter | Description | Default
 `nodeSelector` | node selector rules | `{}`
 `tolerations` | node tolerations | `[]`
 `affinity` | pod affinity rules | `{}`
+`volumes` | additional volumes for the daemonset | `{}`
+`volumeMounts` | additional volumeMounts for the daemonset | `{}`
 
 ## Docker file
 The docker file to build images can be located at
