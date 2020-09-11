@@ -58,3 +58,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Override the command for the container.
+command: nil

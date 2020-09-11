@@ -24,6 +24,10 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name  }}
+        {{- if not (empty .Values.command) }}
+        command:
+          {{- toYaml .Values.command | trim | nindent 10 }}
+        {{- end }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         securityContext:

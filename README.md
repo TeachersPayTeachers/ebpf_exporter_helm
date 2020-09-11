@@ -47,6 +47,7 @@ Parameter | Description | Default
 `nodeSelector` | node selector rules | `{}`
 `tolerations` | node tolerations | `[]`
 `affinity` | pod affinity rules | `{}`
+`command` | supply alternate command to container | `{}`
 
 ## Docker file
 The docker file to build images can be located at
