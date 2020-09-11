@@ -43,9 +43,16 @@ spec:
           name: kernel
         - mountPath: /lib/modules/
           name: modules
-      resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+        {{- if not (empty .Values.volumeMounts) }}
+        {{- toYaml .Values.volumeMounts | trim | nindent 8 }}
+        {{- end }}
+        resources:
+          {{- toYaml .Values.resources | trim | nindent 10 }}
       dnsPolicy: ClusterFirst
+      {{- if not (empty .Values.nodeSelector) }}
+      nodeSelector:
+        {{- toYaml .Values.nodeSelector | trim | nindent 8 }}
+      {{- end }}
       restartPolicy: Always
       schedulerName: default-scheduler
       volumes:
@@ -61,3 +68,6 @@ spec:
             path: /lib/modules/
             type: Directory
           name: modules
+      {{- if not (empty .Values.volumes) }}
+        {{- toYaml .Values.volumes | trim | nindent 8 }}
+      {{- end }}
